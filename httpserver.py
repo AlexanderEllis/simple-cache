@@ -39,12 +39,14 @@ while True:
     headers = request.split('\n')
     filename = headers[0].split()[1]
 
+    print(filename)
+
     # Get the contents of the file
     if filename == '/':
         filename = '/index.html'
 
     try:
-        fin = open('htdocs' + filename)
+        fin = open('public' + filename)
         content = fin.read()
         fin.close()
 
