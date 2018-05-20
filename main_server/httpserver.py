@@ -44,7 +44,7 @@ while True:
         filename = '/index.html'
 
     try:
-        fin = open('htdocs' + filename)
+        fin = open('public' + filename)
         content = fin.read()
         fin.close()
 

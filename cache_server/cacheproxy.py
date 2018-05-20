@@ -5,7 +5,7 @@
 
 import socket
 
-from urllib2 import Request, urlopen, HTTPError
+from urllib.request import Request, urlopen, HTTPError
 
 import argparse
 
@@ -73,7 +73,7 @@ while True:
 
             # Grab the header and content from the server req
             response_headers = response.info()
-            content = response.read()
+            content = response.read().decode('utf-8')
 
             cached_file = open('cache' + filename, 'w')
             cached_file.write(content)
