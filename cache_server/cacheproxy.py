@@ -9,12 +9,12 @@ import argparse
 
 
 def main():
+    # Get port command line argument
     parser = argparse.ArgumentParser()
     parser.add_argument('port')
     args = parser.parse_args()
 
     # Define socket host and port
-
     SERVER_HOST = '0.0.0.0'
     SERVER_PORT = int(args.port)
 
@@ -46,13 +46,16 @@ def main():
         if filename == '/':
             filename = '/index.html'
 
+        # Get the file
         content = fetch_file(filename)
 
+        # If we have the file, return it, otherwise 404
         if content:
             response = 'HTTP/1.0 200 OK\n\n' + content
         else:
             response = 'HTTP/1.0 404 NOT FOUND\n\n File Not Found'
 
+        # Send the response and close the connection
         client_connection.sendall(response.encode())
         client_connection.close()
 
